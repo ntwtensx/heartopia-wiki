@@ -1,0 +1,333 @@
+/* src/css/custom.css */
+
+/* 1. นำเข้าฟอนต์ Itim จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+
+:root {
+  /* --- Palette: Earth Tone Cute --- */
+  /* ปรับสีหลักให้เข้ากับพื้นหลังสีเบจ (คุณแก้สีพวกนี้ได้ตามใจชอบนะ) */
+  --ifm-color-primary: #d4a373;       /* สีน้ำตาลอ่อน/ส้มอิฐ */
+  --ifm-color-primary-dark: #c58f5e;
+  --ifm-color-primary-darker: #bf8552;
+  --ifm-color-primary-light: #e0bfa0;
+  
+  --ifm-background-color: transparent; /* ตั้งเป็น transparent เพื่อให้เห็นลาย Body */
+  
+  --heartopia-text: #5d4037;          /* สีตัวอักษรน้ำตาลเข้ม (อ่านง่ายบนพื้นเบจ) */
+  --heartopia-glass: rgba(255, 255, 255, 0.6); /* กระจกฝ้า */
+
+  /* 2. เปลี่ยนฟอนต์ทั้งเว็บเป็น Itim */
+  --ifm-font-family-base: 'Itim', cursive;
+  --ifm-heading-font-family: 'Itim', cursive;
+}
+
+/* 3. พื้นหลังใหม่ (Background) */
+body {
+  background-color: #e5dfdb;
+  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23aa9492' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed; /* ล็อคพื้นหลังไว้ ให้เนื้อหาเลื่อนผ่าน */
+}
+
+/* Navbar */
+.navbar {
+  background-color: rgba(229, 223, 219, 0.8); /* สีเดียวกับพื้นหลังแต่จางลง */
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(170, 148, 146, 0.3);
+  box-shadow: none;
+}
+
+/* Navbar Items Color */
+.navbar__item, .navbar__link {
+    color: var(--heartopia-text);
+    font-size: 1.1rem; /* เพิ่มขนาดนิดนึงเพราะฟอนต์ Itim ตัวเล็ก */
+}
+
+/* Hero Section (ส่วนหัว) */
+.heroBanner {
+  padding: 6rem 0 4rem;
+  text-align: center;
+  /* เอา Background ออก เพื่อโชว์ลายใบไม้ข้างหลัง */
+  background: transparent; 
+}
+
+.heroTitle {
+  font-size: 4.5rem; /* ฟอนต์ Itim หัวข้อต้องใหญ่ๆ ถึงจะน่ารัก */
+  color: var(--heartopia-text);
+  text-shadow: 3px 3px 0px #fff; 
+}
+
+/* ปุ่ม Cute Button ปรับสีให้เข้าธีม */
+.cuteButton {
+  background-color: #8d6e63; /* สีน้ำตาลกาแฟ */
+  color: white !important;
+  border: none;
+  border-radius: 50px;
+  padding: 15px 45px;
+  font-size: 1.5rem;
+  box-shadow: 0 6px 0px #5d4037; /* เงาแบบแข็ง ให้ดูเป็นการ์ตูน */
+  transition: all 0.2s ease;
+  text-decoration: none !important;
+  display: inline-block;
+}
+
+.cuteButton:hover {
+  transform: translateY(3px); /* กดยุบลงไป */
+  box-shadow: 0 3px 0px #5d4037;
+  background-color: #795548;
+}
+
+/* Feature Cards (การ์ดเมนู) */
+.featureSection {
+  /* ทำให้พื้นหลังการ์ดใสขึ้นนิดนึง เพื่อให้ดูกลมกลืน */
+  background-color: rgba(255, 255, 255, 0.4); 
+  backdrop-filter: blur(5px);
+  border-radius: 50px 50px 0 0;
+  margin-top: -20px;
+  padding: 4rem 0;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+}
+
+.featureCard {
+  background: white;
+  border-radius: 25px;
+  padding: 1.5rem;
+  /* เส้นขอบสไตล์วาดมือ */
+  border: 3px solid #aa9492; 
+  box-shadow: 5px 5px 0px rgba(170, 148, 146, 0.4);
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px) rotate(1deg); /* เอียงนิดๆ เพิ่มความขี้เล่น */
+  border-color: var(--ifm-color-primary);
+  box-shadow: 8px 8px 0px rgba(212, 163, 115, 0.4);
+}
+
+/* Map Section */
+.homeMapSection {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 4rem 0;
+  border-top: 3px dashed #aa9492;
+}
+
+/* src/css/custom.css */
+
+/* ... (โค้ดเดิมด้านบน) ... */
+
+/* =========================================
+   🎨 New Homepage Features Style (Cute UI)
+========================================= */
+
+.features-section-container {
+    padding: 4rem 0;
+}
+
+/* Wrapper หลัก เพื่อใช้จัดตำแหน่ง Header แบบ Absolute */
+.category-section-wrapper {
+  position: relative;
+  padding-top: 25px; /* เว้นที่ว่างด้านบนให้หัวข้อ */
+  height: 100%; /* ให้สูงเท่ากันทั้งแถว */
+}
+
+/* 1. สไตล์หัวข้อลอย (Floating Header) - สีเขียวอมฟ้า */
+.category-floating-header {
+  background-color: #57c5b6; /* สีตามภาพ */
+  color: white;
+  font-family: var(--ifm-heading-font-family);
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 35px;
+  border-radius: 30px; /* ขอบมน */
+  
+  /* จัดตำแหน่งให้ลอยอยู่ตรงกลาง */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5; /* ให้อยู่บนสุด */
+  box-shadow: 0 4px 15px rgba(87, 197, 182, 0.4);
+  white-space: nowrap;
+}
+
+/* 2. สไตล์กรอบเนื้อหา (Content Box) - สีครีมขอบน้ำตาล */
+.category-content-box {
+  background-color: #fffaf5; /* สีครีมจางๆ */
+  border: 3px solid #e6c9a8; /* เส้นขอบสีน้ำตาลอ่อน */
+  border-radius: 30px;
+  padding: 3.5rem 2.5rem 2.5rem; /* เว้นด้านบนเยอะหน่อย */
+  height: 100%;
+  box-shadow: 6px 6px 0px rgba(230, 201, 168, 0.5); /* เงาแบบแข็งสไตล์การ์ตูน */
+}
+
+/* รายการเมนูภายใน */
+.menu-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* ระยะห่างระหว่างบรรทัด */
+}
+
+/* ลิงก์ */
+.menu-item-link {
+  text-decoration: none !important;
+  color: inherit;
+  display: block;
+  transition: all 0.2s ease;
+}
+
+.menu-item-link:hover {
+  transform: translateX(10px); /* เลื่อนขวานิดๆ ตอนชี้ */
+  opacity: 0.8;
+}
+
+/* แถวรายการ (ไอคอน + ข้อความ) */
+.menu-item-row {
+  display: flex;
+  align-items: center;
+}
+
+/* ไอคอน */
+.menu-item-icon {
+  margin-right: 1.5rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1)); มีเงาไอคอนนิดๆ */
+}
+
+.menu-item-icon img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* ข้อความ */
+.menu-item-label {
+  font-family: var(--ifm-font-family-base);
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #d65db1; /* สีชมพูเข้ม/ม่วงตามภาพ */
+}
+/* src/css/custom.css */
+
+/* --- Animal Map Styles --- */
+
+/* ไอคอนสัตว์บนแผนที่: ทำให้เด้งดึ๋งและมีขอบขาว */
+.animal-map-icon {
+  background: transparent;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.animal-map-icon:hover {
+  transform: scale(1.2) translateY(-10px);
+  z-index: 1000 !important;
+}
+
+/* ปรับแต่ง Popup Bubble ของ Leaflet */
+.leaflet-popup-content-wrapper {
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2) !important;
+  border: 2px solid #ffb6c9;
+}
+
+.leaflet-popup-tip {
+  background: #ffb6c9 !important;
+}
+
+/* --- Animal Info Card Styles --- */
+
+.animal-info-card {
+  background-color: #fffaf5; /* สีครีม */
+  border: 3px solid #e6c9a8; /* ขอบน้ำตาลอ่อน */
+  border-radius: 25px;
+  overflow: hidden;
+  height: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 4px 4px 0px rgba(230, 201, 168, 0.4);
+}
+
+.animal-info-card:hover {
+  transform: translateY(-5px);
+  border-color: #d4a373;
+  box-shadow: 6px 6px 0px rgba(212, 163, 115, 0.4);
+}
+
+.animal-card-header {
+  background-color: #fcefe3; /* สีส้มครีมอ่อนๆ */
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 2px dashed #e6c9a8;
+}
+
+.animal-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  background: white;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 0.5rem;
+}
+
+.animal-name {
+  color: #8d6e63;
+  font-family: var(--ifm-heading-font-family);
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.animal-card-body {
+  padding: 1.5rem;
+}
+
+.info-row {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.info-icon {
+  font-size: 1.5rem;
+  margin-right: 15px;
+  min-width: 30px;
+}
+
+/* ป้าย Tag ของกิน */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.tag-pill {
+  background-color: #ffffff;
+  border: 1px solid #ffb6c9;
+  color: #d65db1;
+  padding: 2px 10px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+/* =========================================
+   ✨ New Feature: Highlight Card Effect
+========================================= */
+
+/* คลาสที่จะถูกใส่เข้ามาตอนกดแผนที่ */
+.card-highlighted {
+  border-color: #d65db1 !important; /* เปลี่ยนขอบเป็นสีม่วงชมพูเข้ม */
+  box-shadow: 0 0 20px rgba(214, 93, 177, 0.4) !important; /* มีแสงวิบวับ */
+  transform: scale(1.02) !important; /* ขยายใหญ่ขึ้นนิดนึง */
+  background-color: #fff0f6 !important; /* พื้นหลังอมชมพูเข้มขึ้น */
+}
+
+/* เมื่อไอคอนบนแผนที่ถูกเลือก */
+.animal-map-icon.selected {
+  filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 15px #d65db1);
+  z-index: 9999 !important; /* ให้อยู่บนสุดเสมอ */
+}
