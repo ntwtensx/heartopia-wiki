@@ -1,0 +1,62 @@
+{
+  "/heartopia-wiki/__docusaurus/debug-5b7": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/heartopia-wiki/__docusaurus/debug/config-42b": {
+    "__comp": "__comp---theme-debug-config-23-a-2ff",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/heartopia-wiki/__docusaurus/debug/content-555": {
+    "__comp": "__comp---theme-debug-contentba-8-ce7",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    },
+    "__props": "__props---heartopia-wiki-docusaurus-debug-contentbd-9-ffa"
+  },
+  "/heartopia-wiki/__docusaurus/debug/globalData-d20": {
+    "__comp": "__comp---theme-debug-global-dataede-0fa",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/heartopia-wiki/__docusaurus/debug/metadata-21a": {
+    "__comp": "__comp---theme-debug-site-metadata-68-e-3d4",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/heartopia-wiki/__docusaurus/debug/registry-855": {
+    "__comp": "__comp---theme-debug-registry-679-501",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/heartopia-wiki/__docusaurus/debug/routes-176": {
+    "__comp": "__comp---theme-debug-routes-946-699",
+    "__context": {
+      "plugin": "plugin---docusaurus-debugb-38-ad3"
+    }
+  },
+  "/heartopia-wiki/docs-f74": {
+    "__comp": "__comp---theme-docs-root-5-e-9-0b6",
+    "__context": {
+      "plugin": "plugin---docsaba-d7c"
+    }
+  },
+  "/heartopia-wiki/docs-a6f": {
+    "__comp": "__comp---theme-doc-version-roota-7-b-5de",
+    "__props": "__props---heartopia-wiki-docse-68-669"
+  },
+  "/heartopia-wiki/docs-614": {
+    "__comp": "__comp---theme-doc-roota-94-67a"
+  },
+  "/heartopia-wiki/docs/intro-581": {
+    "__comp": "__comp---theme-doc-item-178-a40",
+    "content": "content---docs-intro-0-e-3-be1"
+  }
+}
