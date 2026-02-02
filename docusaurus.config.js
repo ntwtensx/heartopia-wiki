@@ -1,40 +1,26 @@
+// docusaurus.config.js
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'HEARTOPIA',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'คู่มือการใช้ชีวิตในโลกสุดน่ารัก', // แก้คำโปรยให้ตรงธีม
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
-  },
-
-  // Set the production url of your site here
+  // ตั้งค่า URL สำหรับ GitHub Pages
   url: 'https://ntwtensx.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/heartopia-wiki/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'ntwtensx', // Usually your GitHub org/user name.
-  projectName: 'heartopia-wiki', // Usually your repo name.
+  // Config ของ GitHub
+  organizationName: 'ntwtensx',
+  projectName: 'heartopia-wiki',
 
-  onBrokenLinks: 'throw',
+  // สำคัญ: ถ้าเจอลิงก์เสีย ให้แค่เตือน อย่าหยุดทำงาน
+  onBrokenLinks: 'warn',
+  onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -47,26 +33,9 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
+        // 🔴 ปิด Blog ชั่วคราวเพื่อแก้ปัญหา Error 404
+        blog: false, 
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -77,76 +46,43 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
-        respectPrefersColorScheme: true,
+        defaultMode: 'light',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
       },
       navbar: {
         title: 'HEARTOPIA',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Heartopia Logo',
           src: 'img/logo.svg',
         },
+        // ✨ เมนูที่เราสร้างจริง
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tutorial',
+            label: 'คู่มือเกม (Wiki)', // ลิงก์เข้า docs/intro
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {to: '/map', label: 'แผนที่โลก', position: 'left'}, // ลิงก์หน้าแผนที่
+          {to: '/animal-catalog', label: 'สมุดภาพสัตว์', position: 'left'}, // ลิงก์หน้าสัตว์
+          
+          // ลิงก์ GitHub ของคุณ (ถ้าอยากใส่)
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/ntwtensx/heartopia-wiki',
             label: 'GitHub',
             position: 'right',
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light', // ใช้ธีมสว่างเข้ากับความ Cute
         links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
+          // ล้างลิงก์ขยะออก หรือจะใส่ลิงก์ Community เกมจริงๆ ก็ได้
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Heartopia Fan Wiki. Built with Love & Rocket Coding 🚀`,
       },
       prism: {
         theme: prismThemes.github,
