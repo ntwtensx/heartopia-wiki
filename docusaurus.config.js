@@ -10,8 +10,8 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // ตั้งค่า URL สำหรับ GitHub Pages
-  url: 'https://heartopia-wiki-psi.vercel.app/', // (ใส่อันนี้เพื่อให้ Canonical URL ถูกต้อง)
-  baseUrl: '/',
+  url: 'https://ntwtensx.github.io', // ใส่ Domain หลักของ GitHub User คุณ
+  baseUrl: '/heartopia-wiki/',
 
   // Config ของ GitHub
   organizationName: 'ntwtensx',
