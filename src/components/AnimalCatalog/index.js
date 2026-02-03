@@ -1,7 +1,6 @@
-// --- File: src/components/AnimalCatalog/index.js ---
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import React, { useState, useEffect, useRef } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import 'leaflet/dist/leaflet.css';
 import clsx from 'clsx';
 
