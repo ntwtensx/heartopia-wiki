@@ -1,7 +1,7 @@
 // --- File: src/components/AnimalCatalog/index.js ---
 import React, { useState, useEffect, useRef } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
-import useBaseUrl from '@docusaurus/useBaseUrl'; // ✅ 1. เพิ่มบรรทัดนี้เข้ามา
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import 'leaflet/dist/leaflet.css';
 import clsx from 'clsx';
 
