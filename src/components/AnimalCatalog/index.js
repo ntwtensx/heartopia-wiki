@@ -1,83 +1,85 @@
+// --- File: src/components/AnimalCatalog/index.js ---
 import React, { useState, useEffect, useRef } from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import useBaseUrl from '@docusaurus/useBaseUrl'; // ✅ 1. เพิ่มบรรทัดนี้เข้ามา
 import 'leaflet/dist/leaflet.css';
 import clsx from 'clsx';
 
 // ==========================================
-// 1. 📝 ข้อมูลสัตว์ (เหมือนเดิม)
+// 1. 📝 ข้อมูลสัตว์
 // ==========================================
 const animalData = [
   {
-    id: 'panda',
-    name: 'แพนด้า (Panda)',
-    img: '/img/animals/panda.png',
-    foods: ['ไผ่', 'แอปเปิ้ล', 'ข้าวโพด'],
-    weather: '☀️ แดดออก',
-    locationDesc: 'ใน Jumping Puzzle, ทางทิศใต้ของป่า',
-    coords: [706, 1525] 
+    id: 'alpaca',
+    name: 'อัลปาก้า (Alpaca)',
+    img: '/img/animals/alpaca.png',
+    foods: ['บลูเบอร์รี่', 'สับปะรด', 'ข้าวสาลี'],
+    weather: '🌈 รุ้งกินน้ำ / ☀️ แดดออก',
+    locationDesc: 'ใกล้สะพานแม่น้ำเงียบสงบ',
+    coords: [576, 635]
+  },
+  {
+    id: 'fox',
+    name: 'จิ้งจอก (Fox)',
+    img: '/img/animals/fox.png',
+    foods: ['เนื้อ', 'ปลากะพงแม่น้ำ', 'ปลากะพงปากกว้าง'],
+    weather: '🌈 รุ้งกินน้ำ',
+    locationDesc: 'ทุ่งดอกไม้กังหันลม',
+    coords: [861, 453]
+  },
+  {
+    id: 'ferret',
+    name: 'มิ้งค์ (Mink)', 
+    img: '/img/animals/ferret.png',
+    foods: ['ไข่ไก่', 'ปลากะพงทะเล', 'ปลาบู่'],
+    weather: '🌈 รุ้งกินน้ำ',
+    locationDesc: 'ใกล้บ้านหมายเลข 04',
+    coords: [1287, 603]
   },
   {
     id: 'capybara',
     name: 'คาปิบาร่า (Capybara)',
     img: '/img/animals/capybara.png',
     foods: ['มะเขือเทศ', 'องุ่น', 'ราสเบอร์รี่'],
-    weather: '☁️ เมฆมาก',
-    locationDesc: 'บนยอดเขาออนเซ็น, ทิศตะวันตกของ Crater Lake',
+    weather: '🌈 รุ้งกินน้ำ',
+    locationDesc: 'ซากปรักหักพัง (Old Seq)',
     coords: [1625, 655]
-  },
-  {
-    id: 'rabbit',
-    name: 'กระต่าย (Rabbit)',
-    img: '/img/animals/rabbit.png',
-    foods: ['แครอท', 'วัชพืช', 'สตรอเบอร์รี่'],
-    weather: 'ทุกสภาพอากาศ',
-    locationDesc: 'ทิศตะวันออกของป้ายรถเมล์ย่านชานเมือง',
-    coords: [944, 739]
-  },
-  {
-    id: 'fox',
-    name: 'จิ้งจอก (Fox)',
-    img: '/img/animals/fox.png',
-    foods: ['ปลากะพงขาว', 'ปลากะพง', 'เนื้อสัตว์'],
-    weather: '🌙 กลางคืน',
-    locationDesc: 'เดินตามถนนจากป้ายรถเมล์ทุ่งดอกไม้ ลงไปทางใต้',
-    coords: [861, 453]
-  },
-  {
-    id: 'otter',
-    name: 'นากทะเล (Sea Otter)',
-    img: '/img/animals/otter.png',
-    foods: ['กุ้งฝอย', 'กุ้งแชบ๊วย', 'หอยแมลงภู่'],
-    weather: '🌧️ ฝนตก',
-    locationDesc: 'ทิศใต้ของหมู่บ้านชาวประมง',
-    coords: [523, 1020]
-  },
-  {
-    id: 'ferret',
-    name: 'เฟอร์เร็ต (Ferret)',
-    img: '/img/animals/ferret.png',
-    foods: ['ปลากะพง', 'ปลาบู่', 'ไข่'],
-    weather: 'ทุกสภาพอากาศ',
-    locationDesc: 'ทิศใต้ของแม่น้ำ Rosy, ก่อนถึงบ้าน Home Lot 4',
-    coords: [1287, 603]
   },
   {
     id: 'deer',
     name: 'กวางซีกา (Sika Deer)',
     img: '/img/animals/deer.png',
-    foods: ['ผักกาดหอม', 'สลัดผัก', 'กิ่งไม้'],
-    weather: '☀️ แดดออก',
-    locationDesc: 'ทิศเหนือของป้ายรถเมล์ในป่า',
+    foods: ['กิ่งไม้', 'ผักกาดหอม', 'สลัดคันทรี่'],
+    weather: '🌈 รุ้งกินน้ำ / ☀️ แดดออก',
+    locationDesc: 'ป่าสนโอ๊กวิญญาณ',
     coords: [1069, 1587]
   },
   {
-    id: 'alpaca',
-    name: 'อัลปาก้า (Alpaca)',
-    img: '/img/animals/alpaca.png',
-    foods: ['บลูเบอร์รี่', 'สับปะรด', 'ข้าวสาลี'],
-    weather: 'ทุกสภาพอากาศ',
-    locationDesc: 'ใกล้สะพานที่ข้ามจากหาดแสงสีม่วง ไปยังประภาคาร',
-    coords: [576, 635]
+    id: 'panda',
+    name: 'แพนด้า (Panda)',
+    img: '/img/animals/panda.png',
+    foods: ['ไม้ไผ่', 'แอปเปิ้ล', 'ข้าวโพด'],
+    weather: '🌈 รุ้งกินน้ำ',
+    locationDesc: 'ใกล้แท่นกระโดด',
+    coords: [706, 1525] 
+  },
+  {
+    id: 'rabbit',
+    name: 'กระต่าย (Rabbit)',
+    img: '/img/animals/rabbit.png',
+    foods: ['วัชพืช', 'แครอท', 'สตรอเบอร์รี่'],
+    weather: '🌈 รุ้งกินน้ำ / ☀️ แดดออก',
+    locationDesc: 'ใกล้บ้านหมายเลข 02',
+    coords: [944, 739]
+  },
+  {
+    id: 'otter',
+    name: 'นากทะเล (Sea Otter)',
+    img: '/img/animals/otter.png',
+    foods: ['กุ้งทะเล', 'กุ้งแม่น้ำขาว', 'หอยแมลงภู่'],
+    weather: '🌈 รุ้งกินน้ำ',
+    locationDesc: 'บนหินจัตุรัสหมู่บ้านชาวประมง',
+    coords: [523, 1020]
   },
 ];
 
@@ -91,6 +93,9 @@ function AnimalMapContent({ selectedId, onSelectAnimal }) {
   const mapWidth = 2004;
   const mapHeight = 2004;
   const bounds = [[0, 0], [mapHeight, mapWidth]];
+
+  // ✅ 2. เตรียม URL สำหรับแผนที่โลก
+  const worldMapUrl = useBaseUrl('/img/world-map.png');
 
   function MapFlyTo({ targetId }) {
     const map = useMap();
@@ -107,7 +112,7 @@ function AnimalMapContent({ selectedId, onSelectAnimal }) {
 
   const createAnimalIcon = (imgUrl, isSelected) => {
     return new L.Icon({
-      iconUrl: imgUrl,
+      iconUrl: imgUrl, // รับ URL ที่ผ่าน useBaseUrl มาแล้ว
       iconSize: isSelected ? [70, 70] : [50, 50],
       iconAnchor: isSelected ? [35, 35] : [25, 25],
       popupAnchor: [0, -30],
@@ -124,7 +129,8 @@ function AnimalMapContent({ selectedId, onSelectAnimal }) {
         crs={L.CRS.Simple}
         style={{ height: '100%', width: '100%', background: '#a2d2ff' }}
       >
-        <ImageOverlay url="/img/world-map.png" bounds={bounds} />
+        {/* ✅ ใช้ตัวแปร worldMapUrl ที่แก้ path แล้ว */}
+        <ImageOverlay url={worldMapUrl} bounds={bounds} />
         
         <MapFlyTo targetId={selectedId} />
 
@@ -132,7 +138,8 @@ function AnimalMapContent({ selectedId, onSelectAnimal }) {
           <Marker 
             key={animal.id}
             position={animal.coords}
-            icon={createAnimalIcon(animal.img, selectedId === animal.id)}
+            // ✅ 3. ใช้ useBaseUrl กับรูป icon ในแผนที่
+            icon={createAnimalIcon(useBaseUrl(animal.img), selectedId === animal.id)}
             eventHandlers={{
               click: () => onSelectAnimal(animal.id),
             }}
@@ -140,10 +147,8 @@ function AnimalMapContent({ selectedId, onSelectAnimal }) {
             <Popup className="cute-popup" minWidth={220}>
               <div style={{ textAlign: 'center', fontFamily: 'var(--ifm-font-family-base)' }}>
                 <div style={{ borderBottom: '2px dashed #ffb6c9', paddingBottom: '5px', marginBottom: '8px' }}>
-                    {/* ปรับสีชื่อสัตว์ใน Popup ให้เข้มขึ้น */}
                     <h3 style={{ margin: '0', color: '#a0466f', fontWeight: '800' }}>{animal.name}</h3>
                 </div>
-                {/* ปรับสีตัวหนังสือรายละเอียดใน Popup ให้ดำเกือบสนิท เพื่อให้อ่านง่าย */}
                 <div style={{ fontSize: '0.9rem', textAlign: 'left', lineHeight: '1.6', color: '#2d3436' }}>
                     <div style={{ marginBottom: '4px' }}>
                         <strong style={{ color: '#d65db1' }}>🍲 ของโปรด:</strong> {animal.foods.join(', ')}
@@ -155,7 +160,6 @@ function AnimalMapContent({ selectedId, onSelectAnimal }) {
               </div>
             </Popup>
             <Tooltip direction="top" offset={[0, -20]} opacity={1}>
-                {/* Tooltip ก็ขอตัวหนาหน่อย */}
                 <span style={{ fontWeight: 'bold', color: '#5d4037' }}>{animal.name}</span>
             </Tooltip>
           </Marker>
@@ -179,8 +183,8 @@ const AnimalCard = React.forwardRef(({ animal, isSelected, onClick }, ref) => {
     >
       <div className={clsx('animal-info-card', isSelected && 'card-highlighted')}>
         <div className="animal-card-header">
-          <img src={animal.img} alt={animal.name} className="animal-avatar" />
-          {/* ปรับสีหัวข้อการ์ดให้เข้มชัดเจน */}
+          {/* ✅ 4. ใช้ useBaseUrl กับรูป avatar ในการ์ด */}
+          <img src={useBaseUrl(animal.img)} alt={animal.name} className="animal-avatar" />
           <h3 className="animal-name" style={{ color: '#5d4037', fontWeight: '800' }}>{animal.name}</h3>
         </div>
         
@@ -198,7 +202,6 @@ const AnimalCard = React.forwardRef(({ animal, isSelected, onClick }, ref) => {
           </div>
           <div className="info-row">
             <span className="info-icon">🌤️</span>
-            {/* ปรับสีข้อความเนื้อหาให้เป็นสีเทาเข้มเกือบดำ */}
             <div style={{ color: '#4a4e69', fontWeight: '500' }}>
                 <strong style={{ color: '#8d6e63' }}>สภาพอากาศ:</strong> {animal.weather}
             </div>
@@ -207,7 +210,6 @@ const AnimalCard = React.forwardRef(({ animal, isSelected, onClick }, ref) => {
             <span className="info-icon">📍</span>
             <div>
               <strong style={{ color: '#8d6e63' }}>ถิ่นที่อยู่:</strong>
-              {/* ปรับคำอธิบายสถานที่ให้เข้มขึ้น ไม่งั้นจมบนพื้นครีม */}
               <p style={{ margin: 0, fontSize: '1rem', color: '#4a4e69', fontWeight: '500' }}>
                 {animal.locationDesc}
               </p>
@@ -233,12 +235,10 @@ export default function AnimalCatalog() {
 
   return (
     <div className="container">
-      {/* ส่วนแผนที่ */}
       <div style={{ marginBottom: '3rem' }}>
         <h2 style={{ textAlign: 'center', color: '#3e2723', fontWeight: '800', marginBottom: '0.5rem' }}>
             🗺️ แผนที่ถิ่นที่อยู่ (Locations)
         </h2>
-        {/* ปรับคำอธิบายตรงนี้ให้สีเข้มขึ้นและตัวหนาขึ้น */}
         <p style={{ textAlign: 'center', fontSize: '1.1rem', color: '#5d4037', fontWeight: '600', backgroundColor: 'rgba(255,255,255,0.6)', borderRadius: '15px', display: 'inline-block', padding: '5px 15px' }}>
             ✨ กดที่ไอคอนสัตว์เพื่อดูข้อมูล หรือกดที่การ์ดเพื่อดูตำแหน่ง ✨
         </p>
@@ -254,7 +254,6 @@ export default function AnimalCatalog() {
         </div>
       </div>
 
-      {/* ส่วนรายการสัตว์ */}
       <h2 style={{ textAlign: 'center', color: '#3e2723', fontWeight: '800', marginBottom: '2rem' }}>
           📖 รายละเอียดน้องๆ (Details)
       </h2>
