@@ -200,7 +200,7 @@ const AnimalCard = React.forwardRef(({ animal, isSelected, onClick }, ref) => {
             </div>
           </div>
           <div className="info-row">
-            <span className="info-icon">🌤️</span>
+            <span className="info-icon">❤️</span>
             <div style={{ color: '#4a4e69', fontWeight: '500' }}>
                 <strong style={{ color: '#8d6e63' }}>ชอบสภาพอากาศ:</strong> {animal.weather}
             </div>
