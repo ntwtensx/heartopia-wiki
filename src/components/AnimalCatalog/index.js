@@ -153,7 +153,7 @@ function AnimalMapContent({ selectedId, onSelectAnimal }) {
                         <strong style={{ color: '#d65db1' }}>🍲 ของโปรด:</strong> {animal.foods.join(', ')}
                     </div>
                     <div>
-                        <strong style={{ color: '#d65db1' }}>🌤️ อากาศ:</strong> {animal.weather}
+                        <strong style={{ color: '#d65db1' }}>ชอบสภาพอากาศ:</strong> {animal.weather}
                     </div>
                 </div>
               </div>
@@ -202,13 +202,13 @@ const AnimalCard = React.forwardRef(({ animal, isSelected, onClick }, ref) => {
           <div className="info-row">
             <span className="info-icon">🌤️</span>
             <div style={{ color: '#4a4e69', fontWeight: '500' }}>
-                <strong style={{ color: '#8d6e63' }}>สภาพอากาศ:</strong> {animal.weather}
+                <strong style={{ color: '#8d6e63' }}>ชอบสภาพอากาศ:</strong> {animal.weather}
             </div>
           </div>
           <div className="info-row">
             <span className="info-icon">📍</span>
             <div>
-              <strong style={{ color: '#8d6e63' }}>ถิ่นที่อยู่:</strong>
+              <strong style={{ color: '#8d6e63' }}>ที่อยู่รางอาหาร:</strong>
               <p style={{ margin: 0, fontSize: '1rem', color: '#4a4e69', fontWeight: '500' }}>
                 {animal.locationDesc}
               </p>
@@ -236,7 +236,7 @@ export default function AnimalCatalog() {
     <div className="container">
       <div style={{ marginBottom: '3rem' }}>
         <h2 style={{ textAlign: 'center', color: '#3e2723', fontWeight: '800', marginBottom: '0.5rem' }}>
-            🗺️ แผนที่ถิ่นที่อยู่ (Locations)
+            🗺️ แผนที่ตำแหน่งถิ่น (Locations)
         </h2>
         <p style={{ textAlign: 'center', fontSize: '1.1rem', color: '#5d4037', fontWeight: '600', backgroundColor: 'rgba(255,255,255,0.6)', borderRadius: '15px', display: 'inline-block', padding: '5px 15px' }}>
             ✨ กดที่ไอคอนสัตว์เพื่อดูข้อมูล หรือกดที่การ์ดเพื่อดูตำแหน่ง ✨
